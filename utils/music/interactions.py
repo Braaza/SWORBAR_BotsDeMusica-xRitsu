@@ -59,9 +59,9 @@ class QueueInteraction(disnake.ui.View):
 
             txt = "\n"
             for t in page:
-                txt += f"`{counter})` [`{fix_characters(t.title, limit=50)}`]({t.uri})\n" \
+                txt += f"`{counter})` [{fix_characters(t.title, limit=50)}]({t.uri})\n" \
                        f"`[{time_format(t.duration) if not t.is_stream else '🔴 Livestream'}]`" + \
-                       (f" - `Repetições: {t.track_loops}`" if t.track_loops else  "") + f" - {t.requester.mention}\n`---------`\n"
+                       (f" - `Repetições: {t.track_loops}`" if t.track_loops else  "") + f" - {t.requester.mention}\n▕██◣◥◣◥◣◥◣◥◣◥◣◥◣◥█▉\n"
 
                 counter += 1
 
@@ -108,13 +108,13 @@ class QueueInteraction(disnake.ui.View):
         self.update_embed()
         await interaction.response.edit_message(embed=self.embed)
 
-    @disnake.ui.button(emoji='⏹️', style=disnake.ButtonStyle.grey)
+    @disnake.ui.button(emoji='✖', style=disnake.ButtonStyle.grey)
     async def stop_interaction(self, button, interaction: disnake.MessageInteraction):
 
-        await interaction.response.edit_message(content="Queue fechada", embed=None, view=None)
+        await interaction.response.edit_message(content="Lista fechada", embed=None, view=None)
         self.stop()
 
-    @disnake.ui.button(emoji='🔄', label="Refresh", style=disnake.ButtonStyle.grey)
+    @disnake.ui.button(emoji='🔄', label="Atualizar", style=disnake.ButtonStyle.grey)
     async def update_q(self, button, interaction: disnake.MessageInteraction):
 
         self.update_pages()
