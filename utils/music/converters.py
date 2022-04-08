@@ -130,7 +130,7 @@ async def fav_list(inter, query: str, *, prefix=""):
 
 async def fav_add_autocomplete(inter, query: str):
 
-    return await fav_list(inter, query, prefix="> fav: ")
+    return await fav_list(inter, query, prefix="⭐: ")
 
 
 def queue_author(inter, query):
