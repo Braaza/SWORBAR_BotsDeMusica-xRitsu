@@ -320,7 +320,7 @@ class Owner(commands.Cog):
         node: wavelink.Node = self.bot.music.get_best_node()
 
         if not node:
-            raise GenericError("**Não há servidores de música disponível!**")
+            raise GenericError("**Não há servidores de música disponível!(aguerde até que um esteja online)**")
 
         guild_data = await self.bot.db.get_data(ctx.guild.id, db_name="guilds")
 
