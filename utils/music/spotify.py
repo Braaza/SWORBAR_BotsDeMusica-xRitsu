@@ -38,7 +38,7 @@ class SpotifyTrack:
     def __init__(self, *, uri, title, authors, thumb, duration, requester, playlist = None, album=None, track_loops=0):
         self.author = fix_characters(authors[0].name)
         self.authors = [fix_characters(i.name) for i in authors]
-        self.authors_md = ", ".join(f"[`{a.name}`]({a.link})" for a in authors)
+        self.authors_md = ", ".join(f"[{a.name}]({a.link})" for a in authors)
         self.authors_string = ", ".join(a.name for a in authors)
         self.id = ""
         self.single_title = fix_characters(title)
