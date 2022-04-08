@@ -122,7 +122,7 @@ class Misc(commands.Cog):
             embed.description += f"> **Players ativos:** `{len(self.bot.music.players)}`\n"
 
         if self.bot.commit:
-            embed.description += f"> **Commit atual:** [`{self.bot.commit}`]({self.bot.remote_git_url}/commit/{self.bot.commit})\n"
+            embed.description += f"> **Commit atual:** [{self.bot.commit}]({self.bot.remote_git_url}/commit/{self.bot.commit})\n"
 
         embed.description += f"> **Versão do Python:** `{platform.python_version()}`\n"\
                              f"> **Versão do Disnake:** `{disnake.__version__}`\n" \
@@ -142,14 +142,14 @@ class Misc(commands.Cog):
         if self.bot.default_prefix and not self.bot.config["INTERACTION_COMMAND_ONLY"]:
             embed.description += f"> **Prefixo:** {prefix}\n"
 
-        links = "[`[Source]`](https://github.com/zRitsu/disnake-LL-music-bot)"
+        links = "[[Source]](https://github.com/zRitsu/disnake-LL-music-bot)"
 
         if (await self.bot.application_info()).bot_public:
-            links = f"[`[Invite]`](https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=" \
+            links = f"[[Invite]](https://discord.com/api/oauth2/authorize?client_id={self.bot.user.id}&permissions=" \
                     f"8&scope=bot%20applications.commands) **|** {links}"
 
         if self.bot.config["SUPPORT_SERVER"]:
-            links += f" **|** [`[Suporte]`]({self.bot.config['SUPPORT_SERVER']})"
+            links += f" **|** [[Suporte]]({self.bot.config['SUPPORT_SERVER']})"
 
         embed.description += f">  {links}\n"
 
