@@ -84,7 +84,7 @@ class MusicSettings(commands.Cog):
         }
 
         channel = await target.create_text_channel(
-            f"{self.bot.user.name} player controller",
+            f"▕▏🎵▕▏{self.bot.user.name} ",
             overwrites=perms
         )
 
@@ -100,7 +100,7 @@ class MusicSettings(commands.Cog):
         else:
             message = await send_idle_embed(channel, bot=self.bot)
 
-        await message.create_thread(name="song requests")
+        await message.create_thread(name="➢ ▏Pedir▕🥤")
 
         guild_data = await self.bot.db.get_data(inter.guild.id, db_name="guilds")
 
@@ -183,7 +183,7 @@ class MusicSettings(commands.Cog):
 
             if not node.available: continue
 
-            txt = f"Região: `{node.region.title()}`\n"
+            txt = f"🌐 Região: `{node.region.title()}`\n"
 
             try:
                 current_player = node.players[inter.guild.id]
