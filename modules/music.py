@@ -426,7 +426,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
             if hide_playlist:
                 log_text = f"Adicionou uma playlist com {len(tracks.tracks)} música(s) {pos_txt}."
             else:
-                log_text = f"{inter.author.mention} adicionou a playlist [`{fix_characters(tracks.data['playlistInfo']['name'], 20)}`]({query}){pos_txt} `({len(tracks.tracks)})`."
+                log_text = f"{inter.author.mention} adicionou a playlist [{fix_characters(tracks.data['playlistInfo']['name'], 20)}]({query}){pos_txt} `({len(tracks.tracks)})`."
 
             total_duration = 0
 
@@ -786,10 +786,10 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
 
         embed = disnake.Embed(color=disnake.Colour.green())
 
-        txt = f"{inter.author.mention} removeu a música [`{(fix_characters(track.title, 25))}`]({track.uri}) da fila."
+        txt = f"{inter.author.mention} removeu a música [{(fix_characters(track.title, 25))}]({track.uri}) da fila."
 
         player.command_log = txt
-        embed.description=f"**Música removida:** [`{track.title}`]({track.uri})"
+        embed.description=f"**Música removida:** [{track.title}]({track.uri})"
         embed.set_thumbnail(url=track.thumb)
         await inter.send(embed=embed, ephemeral=True)
 
@@ -919,11 +919,11 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
 
         player.queue.insert(int(position) - 1, track)
 
-        txt = f"{inter.author.mention} moveu a música [`{fix_characters(track.title, limit=25)}`]({track.uri}) para a posição **[{position}]** da fila."
+        txt = f"{inter.author.mention} moveu a música [{fix_characters(track.title, limit=25)}]({track.uri}) para a posição **[{position}]** da fila."
 
         embed = disnake.Embed(color=disnake.Colour.green())
 
-        embed.description = f"**A música foi movida para a posição {position} da fila:** [`{fix_characters(track.title)}`]({track.uri})"
+        embed.description = f"**A música foi movida para a posição {position} da fila:** [{fix_characters(track.title)}]({track.uri})"
         embed.set_thumbnail(url=track.thumb)
         player.command_log = txt
         await inter.send(embed=embed, ephemeral=True)
@@ -957,7 +957,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
         track = player.queue[index]
 
         if index <= 0:
-            embed.description = f"{inter.author.mention} **a música **[`{track.title}`]({track.uri}) já é a próxima da fila."
+            embed.description = f"{inter.author.mention} **a música **[{track.title}]({track.uri}) já é a próxima da fila."
             await inter.send(embed=embed, ephemeral=True)
             return
 
@@ -965,9 +965,9 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
 
         embed.colour = disnake.Colour.green()
 
-        txt = f"{inter.author.mention} rotacionou a fila para a música [`{(fix_characters(track.title, limit=25))}`]({track.uri})."
+        txt = f"{inter.author.mention} rotacionou a fila para a música [{(fix_characters(track.title, limit=25))}]({track.uri})."
 
-        embed.description = f"**Fila rotacionada para a música:** [`{track.title}`]({track.uri})."
+        embed.description = f"**Fila rotacionada para a música:** [{track.title}]({track.uri})."
         embed.set_thumbnail(url=track.thumb)
         player.command_log = txt
         await inter.send(embed=embed, ephemeral=True)
@@ -1521,13 +1521,13 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
 
                 if control == "help":
                     embed = disnake.Embed(
-                        description="📘 **IFORMAÇÕES SOBRE OS BOTÕES** 📘\n\n"
-                                    "⏯️ `= Pausar/Retomar a música.`\n"
+                        description="📘 **__IFORMAÇÕES SOBRE OS BOTÕES__** 📘\n\n"
+                                    "⏸ `= Pausar/Retomar a música.`\n"
                                     "⏮️ `= Voltar para a música tocada anteriormente.`\n"
                                     "⏭️ `= Pular para a próxima música.`\n"
                                     "🔀 `= Misturar as músicas da fila.`\n"
                                     "🎶 `= Pedir uma música.`\n"
-                                    # "🇳 `= Ativar/Desativar o efeito Nightcore`\n"
+                                     "🇳 `= Ativar/Desativar o efeito Nightcore`\n"
                                     "⏹️ `= Parar o player e me desconectar do canal.`\n"
                                     "🔊 `= Ajustar volume.`\n"
                                     "🔁 `= Ativar/Desativar repetição.`\n"
@@ -1784,10 +1784,10 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
         try:
             player.queue.extend(tracks.tracks)
             if isinstance(message.channel, disnake.Thread):
-                embed.description = f"> 🎶 **┃ Playlist adicionada:** [`{tracks.data['playlistInfo']['name']}`]({message.content})\n" \
-                                    f"> ✋ **┃ Pedido por:** {message.author.mention}\n" \
-                                    f"> 🎼 **┃ Música(s):** `[{len(tracks.tracks)}]`"
-                embed.set_thumbnail(url=tracks.tracks[0].thumb)
+                embed.description = f"> 🎶 **┃ Playlist adicionada:** [{tracks.data['playlistInfo']['name']}]({message.content})\n" \
+                                    f"> 🏮 **┃ Pedido por:** {message.author.mention}\n" \
+                                    f"> 🎵 **┃ Música(s):** `[{len(tracks.tracks)}]`"
+                embed.set_image(url=tracks.tracks[0].thumb)
                 if response:
                     await response.edit(content=None, embed=embed, view=None)
                 else:
@@ -1795,17 +1795,17 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
 
             else:
                 player.command_log = f"{message.author.mention} adicionou a playlist " \
-                                     f"[`{fix_characters(tracks.data['playlistInfo']['name'], 20)}`]({tracks.tracks[0].playlist['url']}) `({len(tracks.tracks)})`."
+                                     f"[{fix_characters(tracks.data['playlistInfo']['name'], 20)}]({tracks.tracks[0].playlist['url']}) `({len(tracks.tracks)})`."
 
 
         except AttributeError:
             player.queue.append(tracks[0])
             if isinstance(message.channel, disnake.Thread):
-                embed.description = f"> 🎵 **┃ Adicionado:** [`{tracks[0].title}`]({tracks[0].uri})\n" \
+                embed.description = f"> 🎵 **┃ Adicionado:** [{tracks[0].title}]({tracks[0].uri})\n" \
                                     f"> 💠 **┃ Uploader:** `{tracks[0].author}`\n" \
-                                    f"> ✋ **┃ Pedido por:** {message.author.mention}\n" \
+                                    f"> 🏮 **┃ Pedido por:** {message.author.mention}\n" \
                                     f"> ⌛ **┃ Duração:** `{time_format(tracks[0].duration) if not tracks[0].is_stream else '🔴 Livestream'}` "
-                embed.set_thumbnail(url=tracks[0].thumb)
+                embed.set_image(url=tracks[0].thumb)
                 if response:
                     await response.edit(content=None, embed=embed, view=None)
                 else:
@@ -1813,7 +1813,7 @@ class Music(commands.Cog, wavelink.WavelinkMixin):
 
             else:
                 duration = time_format(tracks[0].duration) if not tracks[0].is_stream else '🔴 Livestream'
-                player.command_log = f"{message.author.mention} adicionou [`{fix_characters(tracks[0].title, 20)}`]({tracks[0].uri}) `({duration})`."
+                player.command_log = f"{message.author.mention} adicionou [{fix_characters(tracks[0].title, 20)}]({tracks[0].uri}) `({duration})`."
 
         if not player.is_connected:
             await self.connect(message, message.author.voice.channel)
