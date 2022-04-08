@@ -74,11 +74,11 @@ class LavalinkTrack(wavelink.Track):
         args[1]['title'] = fix_characters(args[1]['title'])
         super().__init__(*args, **kwargs)
         self.single_title = self.title
-        self.authors_md = f"`{self.author}`"
+        self.authors_md = f" {self.author}"
         self.authors_string = self.author
 
         if self.ytid:
-            self.thumb = f"https://img.youtube.com/vi/{self.ytid}/mqdefault.jpg"
+            self.thumb = f"https://img.youtube.com/vi/{self.ytid}/maxresdefault.jpg"
         elif "soundcloud.com" in self.uri:
             self.thumb = self.info.get("artworkUrl", "").replace('large.jpg', 't500x500.jpg')
         else:
@@ -251,13 +251,10 @@ class LavalinkPlayer(wavelink.Player):
         components = []
 
         controls = {
-            "⏯️": ("playpause", get_button_style(self.paused),),
-            "⏮️": ("back",),
-            "⏭️": ("skip",),
             "🔀": ("shuffle",),
-            #"🇳": ("nightcore", get_button_style(self.nightcore, red=False),),
-            "🎶": ("add_song",),
-            "⏹️": ("stop",),
+            "⏮️": ("back",),
+            "⏸": ("playpause", get_button_style(self.paused),),
+            "⏭️": ("skip",),
             ("🔂" if self.loop == "current" else "🔁"): (
                 "loop_mode",
                 disnake.ButtonStyle.grey if not self.loop
@@ -265,8 +262,11 @@ class LavalinkPlayer(wavelink.Player):
                 if self.loop == "current" else disnake.ButtonStyle.green,
             ),
             "🔊": ("volume",),
+            "🇳": ("nightcore", get_button_style(self.nightcore, red=False),),
+            "🎶": ("add_song",),
+            "⏹️": ("stop",),
             "📑": ('queue',),
-            "<:help:947781412017279016>": ("help",)
+            "<:ein:918548938951381022>": ("help",)
         }
 
         for button, control in controls.items():
