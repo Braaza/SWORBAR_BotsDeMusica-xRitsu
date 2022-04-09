@@ -25,7 +25,7 @@ from config_loader import load_config
 CONFIGS = load_config()
 
 if not CONFIGS["DEFAULT_PREFIX"]:
-    CONFIGS["DEFAULT_PREFIX"] = "!!!"
+    CONFIGS["DEFAULT_PREFIX"] = "sb/"
 
 if CONFIGS['START_LOCAL_LAVALINK'] is True:
     run_lavalink(
@@ -54,7 +54,7 @@ try:
     remote_git_url = check_output(['git', 'remote', '-v']).decode(
         'ascii').strip().split("\n")[0][7:].replace(".git (fetch)", "")
 except:
-    remote_git_url = ""
+    remote_git_url = "https://github.com/Braaza/SWORBAR_BotsDeMusica-xRitsu.git"
 
 bots = []
 
