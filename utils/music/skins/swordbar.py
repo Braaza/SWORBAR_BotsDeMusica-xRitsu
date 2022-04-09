@@ -72,7 +72,7 @@ def load(player: LavalinkPlayer) -> dict:
         txt += f"\n> 🔂 **⠂Repetições restantes:** `{player.current.track_loops}`"
 
     if player.nightcore:
-        txt += f"\n> 🌙 **⠂Efeito 24/7:** `ativado`"
+        txt += f"\n> 🌙 **⠂Efeito nightcore:** `ativado`"
 
     if player.current.album:
         txt += f"\n> 💽 **⠂Álbum:** [{fix_characters(player.current.album['name'], limit=playlist_text_size)}]({player.current.album['url']})"
@@ -81,7 +81,7 @@ def load(player: LavalinkPlayer) -> dict:
         txt += f"\n> 🎶 **⠂Playlist:** [{fix_characters(player.current.playlist['name'], limit=playlist_text_size)}]({player.current.playlist['url']})"
 
     if player.nonstop:
-        txt += "\n> 📻 **⠂Modo interrupto:** `Ativado`"
+        txt += "\n> 📻 **⠂Modo 24/7:** `Ativado`"
 
     txt += f"{vc_txt}\n"
 
