@@ -1,7 +1,7 @@
 {
-  "name": "Disnake LL Music Bot",
+  "name": "SWORDBAR_BotsDeMusica-xRitsu",
   "description": "bot de música em python feito com disnake + lavalink.",
-  "repository": "",
+  "repository": "https://github.com/Braaza/SWORBAR_BotsDeMusica-xRitsu.git",
   "keywords": [
     "discord.py",
     "disnake",
