@@ -78,13 +78,13 @@ class LavalinkTrack(wavelink.Track):
         self.authors_string = self.author
 
         if self.ytid:
-            self.thumb = f"https://img.youtube.com/vi/{self.ytid}/maxresdefault.jpg"
+            self.thumb = f"https://img.youtube.com/vi/{self.ytid}/3.jpg"
         elif "soundcloud.com" in self.uri:
             self.thumb = self.info.get("artworkUrl", "").replace('large.jpg', 't500x500.jpg')
         else:
             self.thumb = self.info.get("artworkUrl", "")
 
-        if self.info.get("class") == "YoutubeAudioTrack" and self.playlist:
+        if self.info.get("sourceName") == "youtube" and self.playlist:
             self.uri = f"{self.uri}&list={parse.parse_qs(parse.urlparse(self.playlist['url']).query)['list'][0]}"
 
 
