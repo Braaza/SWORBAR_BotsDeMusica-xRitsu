@@ -78,7 +78,7 @@ class LavalinkTrack(wavelink.Track):
         self.authors_string = self.author
 
         if self.ytid:
-            self.thumb = f"https://img.youtube.com/vi/{self.ytid}/3.jpg"
+            self.thumb = f"https://img.youtube.com/vi/{self.ytid}/0.jpg"
         elif "soundcloud.com" in self.uri:
             self.thumb = self.info.get("artworkUrl", "").replace('large.jpg', 't500x500.jpg')
         else:
