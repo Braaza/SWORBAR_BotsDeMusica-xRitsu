@@ -24,7 +24,7 @@ class BotCore(commands.AutoShardedBot):
         self.session: Optional[aiohttp.ClientError] = None
         self.db: Optional[LocalDatabase, MongoDatabase] = None
         self.config = kwargs.pop('config', {})
-        self.default_prefix = kwargs.pop("default_prefix", "!!!")
+        self.default_prefix = kwargs.pop("default_prefix", "sb/")
         self.spotify: Optional[SpotifyClient] = kwargs.pop('spotify', None)
         self.music = music_mode(self)
         self.session = aiohttp.ClientSession()
